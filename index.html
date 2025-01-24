@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- displays site properly based on user's device -->
+
+  <link rel="icon" type="image/png" sizes="32x32" href="./images/favicon-32x32.png">
+
+  <title>Frontend Mentor | Time tracking dashboard</title>
+
+  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
+  <style>
+    .attribution {
+      font-size: 11px;
+      text-align: center;
+    }
+
+    .attribution a {
+      color: hsl(228, 45%, 44%);
+    }
+  </style>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link
+    href="https://fonts.googleapis.com/css2?family=Rubik:ital,wght@0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap"
+    rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://unpkg.com/vue@3/dist/vue.global.js"></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css" />
+  <link rel="stylesheet" href="style.css">
+</head>
+
+<body id="app" class="grid justify-center my-16 lg:items-center lg:min-h-screen lg:my-0">
+  <div class="m-auto grid gap-6 lg:grid-cols-4 lg:max-w-[1100px] lg:gap-7">
+    <div class=" row-span-2 mt-2 rounded-b-lg">
+      <div class="rounded-xl bg-violet-500 flex lg:flex-col align-center lg:align-start p-8">
+        <img src="./images/image-jeremy.png" alt="profile picture" class=" w-[68px] lg:w-[85px] lg:mb-8">
+        <div>
+          <small class="p-2">Report for</small>
+          <h1 class="p-2 pt-0 font-title font-light text-white text-2xl lg:text-4xl">Jeremy Robson</h1>
+        </div>
+      </div>
+
+      <div class=" relative flex lg:flex-col items-center justify-between pl-7 pr-7 pt-4 pb-4 ">
+        <button class="p-4" @click="selectedTimeframe = 'daily'">Daily</button>
+        <button class="p-4" @click="selectedTimeframe = 'weekly'">Weekly</button>
+        <button class="p-4" @click="selectedTimeframe = 'monthly'">Monthly</button>
+      </div>
+    </div>
+
+    <div v-for="(item,index) in message" :style="{ 'animation-duration': index + 's' }"
+      class="animate__animated animate__bounceInLeft rounded-2xl h-full flex min-h-[15.25rem]    " :class=" item.title">
+
+      <div style="min-height: 80%" class="mt-auto w-full rounded-2xl relative">
+
+        <div class=" flex flex-col p-6 rounded-2xl relative">
+          <div class="flex justify-between items-center">
+            <h2 class="font-bold">{{item.title}}</h2>
+            <img src="images/icon-ellipsis.svg" alt="bullets" class="justify-self-end">
+          </div>
+          <div class="flex justify-between items-center lg:flex-col lg:items-start lg:justify-start lg:mt-8 ">
+            <h3 class="font-light mt-9 lg:mt-0            text-6xl">{{ item.timeframes[selectedTimeframe].current}}hrs
+            </h3>
+            <p class=" text-sm">Previous - {{ item.timeframes[selectedTimeframe].previous}}hrs</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+
+</body>
+<script>
+  const { createApp, ref } = Vue
+
+  createApp({
+    setup() {
+      const message = ref([])
+      const selectedTimeframe = ref("daily")
+      return {
+        message,
+        selectedTimeframe
+      }
+
+
+    },
+
+    mounted() {
+      fetch('/data.json', {
+        headers: { 'Content-type': 'application/json' },
+      }).then(res => res.json()).then((response) => {
+        this.message = response;
+      }).catch((error) => {
+        this.message = error;
+      });
+    }
+
+  }).mount('#app')
+</script>
+
+</html>

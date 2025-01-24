@@ -1,0 +1,71 @@
+body {
+    background-color: hsl(226, 43%, 10%);
+    color: #fff;
+    font-family: "Rubik", sans-serif;
+}
+
+.relative {
+    background-color: hsl(235, 46%, 20%);
+}
+
+.Work {
+background-image: url(/images/icon-work.svg);
+background-position:top     right;
+background-repeat: no-repeat;
+background-color: hsl(15, 100%, 70%);
+z-index: -1;
+
+
+
+
+}
+.Play {
+background-image: url(/images/icon-play.svg);
+background-position: top     right;
+background-repeat: no-repeat;
+background-color: hsl(195, 74%, 62%);
+z-index: -1;
+
+
+
+}
+.Study {
+background-image: url(/images/icon-study.svg);
+background-position:   top   right;
+background-repeat: no-repeat;
+background-color: hsl(348, 100%, 68%);
+z-index: -1;
+
+
+
+}
+.Exercise {
+background-image: url(/images/icon-exercise.svg);
+background-position:    top  right;
+background-repeat: no-repeat;
+background-color: hsl(145, 58%, 55%);
+z-index: -1;
+
+
+
+}
+.Social{
+background-image: url(/images/icon-social.svg);
+background-position: top right;
+background-repeat: no-repeat;
+background-color: hsl(264, 64%, 52%);
+z-index: -1;
+
+
+
+}
+.Self {
+background-image: url(/images/icon-self-care.svg);
+background-position:   top   right;
+background-repeat: no-repeat;
+background-color:  hsl(43, 84%, 65%);
+z-index: -1;
+
+
+
+}
