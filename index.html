@@ -87,7 +87,7 @@
     },
 
     mounted() {
-      fetch('/data.json', {
+      fetch('./data.json', {
         headers: { 'Content-type': 'application/json' },
       }).then(res => res.json()).then((response) => {
         this.message = response;
