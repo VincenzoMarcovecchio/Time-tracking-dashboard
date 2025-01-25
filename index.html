@@ -10,17 +10,6 @@
 
   <title>Frontend Mentor | Time tracking dashboard</title>
 
-  <!-- Feel free to remove these styles or customise in your own stylesheet 👍 -->
-  <style>
-    .attribution {
-      font-size: 11px;
-      text-align: center;
-    }
-
-    .attribution a {
-      color: hsl(228, 45%, 44%);
-    }
-  </style>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link
@@ -34,19 +23,21 @@
 
 <body id="app" class="grid justify-center my-16 lg:items-center lg:min-h-screen lg:my-0">
   <div class="m-auto grid gap-6 lg:grid-cols-4 lg:max-w-[1100px] lg:gap-7">
-    <div class=" row-span-2 mt-2 rounded-b-lg">
-      <div class="rounded-xl bg-violet-500 flex lg:flex-col align-center lg:align-start p-8">
-        <img src="./images/image-jeremy.png" alt="profile picture" class=" w-[68px] lg:w-[85px] lg:mb-8">
+    <div class=" relative rounded-xl row-span-2 rounded-b-lg flex justify-between flex-col         ">
+      <div class="rounded-xl bg-violet-500 flex lg:flex-col align-center  lg:align-start p-8">
+        <img src="./images/image-jeremy.png" alt="profile picture"
+          class="w-16 rounded-full border-[0.1875rem] border-white lg:w-[5.25rem] lg:mb-8" />
         <div>
           <small class="p-2">Report for</small>
           <h1 class="p-2 pt-0 font-title font-light text-white text-2xl lg:text-4xl">Jeremy Robson</h1>
         </div>
       </div>
 
-      <div class=" relative flex lg:flex-col items-center justify-between pl-7 pr-7 pt-4 pb-4 ">
-        <button class="p-4" @click="selectedTimeframe = 'daily'">Daily</button>
-        <button class="p-4" @click="selectedTimeframe = 'weekly'">Weekly</button>
-        <button class="p-4" @click="selectedTimeframe = 'monthly'">Monthly</button>
+      <div
+        class="  rounded-xl  relative flex lg:flex-col items-center justify-between pl-7 pr-7 pt-3  pb-3  lg:items-start  ">
+        <button class="p-3" @click="selectedTimeframe = 'daily'">Daily</button>
+        <button class="p-3" @click="selectedTimeframe = 'weekly'">Weekly</button>
+        <button class="p-3" @click="selectedTimeframe = 'monthly'">Monthly</button>
       </div>
     </div>
 
@@ -61,9 +52,10 @@
             <img src="images/icon-ellipsis.svg" alt="bullets" class="justify-self-end">
           </div>
           <div class="flex justify-between items-center lg:flex-col lg:items-start lg:justify-start lg:mt-8 ">
-            <h3 class="font-light mt-9 lg:mt-0            text-6xl">{{ item.timeframes[selectedTimeframe].current}}hrs
+            <h3 class="font-light mt-14 lg:mt-0 text-5xl lg:text-6xl">{{
+              item.timeframes[selectedTimeframe].current}}hrs
             </h3>
-            <p class="  mt-9 lg:mt-0    text-sm">Previous - {{ item.timeframes[selectedTimeframe].previous}}hrs</p>
+            <p class="  mt-14 lg:mt-3  text-sm">Previous - {{ item.timeframes[selectedTimeframe].previous}}hrs</p>
           </div>
         </div>
       </div>
